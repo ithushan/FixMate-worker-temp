@@ -7,6 +7,7 @@ export type Job = {
   customer: {
     name: string;
     avatarUrl: string;
+    
   };
   status: 'new' | 'confirmed' | 'in-progress' | 'completed' | 'cancelled';
   scheduledTime?: string;
