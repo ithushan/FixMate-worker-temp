@@ -28,7 +28,7 @@ export default function LoginPage() {
               <Label htmlFor="otp">OTP Code</Label>
               <Input id="otp" type="text" placeholder="Enter the code sent to you" required />
             </div>
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+            <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg" asChild>
                 <Link href="/dashboard">Login</Link>
             </Button>
           </form>

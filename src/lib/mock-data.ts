@@ -14,6 +14,7 @@ export type Job = {
   afterPhotoUrl?: string;
   summary?: string;
   estimatedTime: string;
+  earnings?: number;
 };
 
 export const jobs: Job[] = [
@@ -70,9 +71,27 @@ export const jobs: Job[] = [
     status: 'completed',
     scheduledTime: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
     estimatedTime: '1 hour',
+    earnings: 5000,
     dailyNotes: 'Used a plumbing snake to clear a major hair clog. Flushed the drain with high-pressure water to ensure it is completely clear.',
     afterPhotoUrl: 'https://placehold.co/600x400.png',
   },
+  {
+    id: '5',
+    title: 'Fixed wiring issues',
+    type: 'Electrical',
+    distance: '8 km away',
+    description: 'Several outlets in the living room are not working. Suspect a wiring issue in the circuit.',
+    customer: {
+        name: 'Kamal Jayasuriya',
+        avatarUrl: 'https://placehold.co/100x100.png',
+    },
+    status: 'completed',
+    scheduledTime: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), // 1 week ago
+    estimatedTime: '3 hours',
+    earnings: 8500,
+    dailyNotes: 'Traced the issue to a faulty breaker in the main panel. Replaced the breaker and tested all outlets. All are now functional.',
+    afterPhotoUrl: 'https://placehold.co/600x400.png',
+  }
 ];
 
 export const skills = ['Plumbing', 'Carpentry', 'Electrical', 'Painting', 'Masonry', 'Welding'];

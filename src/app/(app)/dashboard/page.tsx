@@ -4,11 +4,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { jobs, workerProfile } from "@/lib/mock-data";
-import { ArrowRight, Briefcase, MapPin, Clock } from "lucide-react";
+import { ArrowRight, Briefcase, MapPin, Clock, DollarSign, CheckCircle, Star } from "lucide-react";
 import Link from "next/link";
 
 export default function DashboardPage() {
   const newJobs = jobs.filter(job => job.status === 'new' || job.status === 'confirmed');
+  const completedJobs = jobs.filter(job => job.status === 'completed');
+  const weeklyEarnings = completedJobs.reduce((total, job) => total + (job.earnings || 0), 0);
+  const jobsCompletedCount = completedJobs.length;
+  // The rating is available in workerProfile in reviews page, but let's hardcode it for simplicity on dashboard
+  const rating = 4.8;
 
   return (
     <div className="p-4 space-y-6">
@@ -22,6 +27,29 @@ export default function DashboardPage() {
           <AvatarFallback>{workerProfile.name.charAt(0)}</AvatarFallback>
         </Avatar>
       </div>
+
+      <Card>
+        <CardHeader>
+            <CardTitle className="text-lg font-headline">Your Week at a Glance</CardTitle>
+        </CardHeader>
+        <CardContent className="grid grid-cols-3 gap-4 text-center">
+            <div>
+                <DollarSign className="h-6 w-6 mx-auto mb-2 text-primary" />
+                <p className="text-xl font-bold">LKR {weeklyEarnings.toLocaleString()}</p>
+                <p className="text-xs text-muted-foreground">Earnings</p>
+            </div>
+             <div>
+                <CheckCircle className="h-6 w-6 mx-auto mb-2 text-primary" />
+                <p className="text-xl font-bold">{jobsCompletedCount}</p>
+                <p className="text-xs text-muted-foreground">Jobs Done</p>
+            </div>
+            <div>
+                <Star className="h-6 w-6 mx-auto mb-2 text-accent fill-accent" />
+                <p className="text-xl font-bold">{rating}</p>
+                <p className="text-xs text-muted-foreground">Rating</p>
+            </div>
+        </CardContent>
+      </Card>
 
       <Card className="bg-primary/5 border-primary/20">
         <CardContent className="p-4 flex items-center justify-between">

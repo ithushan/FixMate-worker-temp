@@ -69,7 +69,7 @@ export default function RegisterPage() {
                <p className="text-xs text-muted-foreground">Upload a photo of your National ID or Driver's License.</p>
             </div>
             
-            <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+            <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg" asChild>
               <Link href="/dashboard">Create Account</Link>
             </Button>
           </form>
